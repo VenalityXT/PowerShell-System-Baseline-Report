@@ -45,12 +45,10 @@ This setup makes it easy to draft, test, and refine the script while inspecting 
 
 The script begins by collecting basic system identity details. PowerShell stores information inside **variables**, which always start with a `$` symbol. These variables will later be used to print the system summary and write it to a report file.
 
-<img width="585" alt="image" src="https://github.com/user-attachments/assets/2c064e99-5400-447c-9097-cf705b3160d9" />
-
 #### **Computer Name**
-X
+```PowerShell
 $computerName = $env:COMPUTERNAME
-X
+```
 
 - `$env:` accesses Windows **environment variables** (values provided by the OS).  
 - `COMPUTERNAME` holds the hostname of the machine.  
@@ -59,9 +57,9 @@ X
 This gives the script a reliable identifier for the report.
 
 #### **Operating System Name**
-X
+```PowerShell
 $os = (Get-WmiObject Win32_OperatingSystem).Caption
-X
+```
 
 - `Get-WmiObject` queries system information using **Windows Management Instrumentation (WMI)**.  
 - `Win32_OperatingSystem` is a WMI class containing details about the installed OS.  
