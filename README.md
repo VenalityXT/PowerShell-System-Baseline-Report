@@ -75,8 +75,6 @@ PowerShell returns the entire OS object, but using `.Caption` isolates the name 
 
 The next part of the script retrieves storage information from the system’s primary drive. PowerShell represents drives as **objects**, each containing properties such as `Used`, `Free`, and `Name`. By accessing these properties directly, the script can calculate readable disk values for the report.
 
-<img width="585" alt="image" src="https://github.com/user-attachments/assets/0bd4c2f7-d0b0-4af8-95c2-2fb07dc9f4ce" />
-
 #### **Free Space on C: Drive**
 ```PowerShell
 $freeSpace = (Get-PSDrive C).Free / 1GB
@@ -101,10 +99,12 @@ $totalSpace = ((Get-PSDrive C).Used + (Get-PSDrive C).Free) / 1GB
 
 ---
 
-## **Step 4: Output Results to Console**
+### **Step 4: Output Results to Console**
 
-The script prints each value to the terminal to provide real-time confirmation:
+With all system data stored in variables, the next step is to display the results in the PowerShell console.  
+PowerShell uses `Write-Output` to print information, making it useful for quick verification before saving the final report.
 
+#### **Console Output Commands**
 ```PowerShell
 Write-Output "Computer Name: $computerName"
 Write-Output "Operating System: $os"
@@ -112,35 +112,108 @@ Write-Output ("Free Space (GB): {0:N2}" -f $freeSpace)
 Write-Output ("Total Space (GB): {0:N2}" -f $totalSpace)
 ```
 
-**Terminal Output:**
+#### **How These Lines Work**
 
-<img width="651" height="395" alt="image" src="https://github.com/user-attachments/assets/0ec9063f-45e4-439f-b934-04dd3f380879" />
+- `Write-Output`  
+  Sends text into the console pane so you can immediately confirm whether variable values are correct.
+
+- `"Computer Name: $computerName"`  
+  This uses **string interpolation** — PowerShell replaces `$computerName` with its actual value.
+
+- `("Free Space (GB): {0:N2}" -f $freeSpace)`  
+  This uses a **formatting operator (`-f`)**, which allows more control over numeric output:
+  - `{0:N2}` means:  
+    - `0` → placeholder for the first argument  
+    - `N2` → format as a number with **2 decimal places**  
+  - Example output:  
+    `Free Space (GB): 27.45`
+
+Using formatting ensures the report is clean, readable, and consistent.
+
+> Displaying results before writing them to a file acts as a verification step—if something looks incorrect, the script can be corrected before generating the final report.
 
 ---
 
-## **Step 5: Save the Report to a Text File**
+### **Step 5: Save the Report to a Text File**
 
-A file path is created on the Desktop, and the results are written into `Simple_System_Report.txt`:
+After verifying the output in the console, the script writes the results to a report stored on the Desktop.  
+PowerShell uses **file redirection cmdlets** like `Out-File` to save formatted text to disk.
 
+#### **Define Where the Report Will Be Saved**
 ```PowerShell
 $reportPath = "$env:USERPROFILE\Desktop\Simple_System_Report.txt"
+```
+
+- `$env:USERPROFILE` retrieves the current user’s profile directory (e.g., `C:\Users\Admin`).  
+- `\Desktop\Simple_System_Report.txt` builds the full file path.  
+- The final value is stored in `$reportPath`, which all subsequent commands will reference.
+
+This makes the script flexible: it always saves to the correct Desktop, regardless of username.
+
+---
+
+#### **Write Each Line of the Report**
+```PowerShell
 "Computer Name: $computerName" | Out-File $reportPath
 "Operating System: $os"         | Out-File $reportPath -Append
 ("Free Space (GB): {0:N2}" -f $freeSpace)  | Out-File $reportPath -Append
 ("Total Space (GB): {0:N2}" -f $totalSpace) | Out-File $reportPath -Append
 ```
 
-A final confirmation message is displayed with the saved file path.
+##### **How It Works**
+
+- `"text" | Out-File`  
+  Sends the string through the pipeline (`|`) into the output file.
+
+- The first line uses **no `-Append`**, meaning it **creates or overwrites** the file.
+
+- The following lines use `-Append`, meaning:
+  - they **add** new lines to the end of the file  
+  - the original content remains untouched  
+
+##### **Formatting Expressions Again**
+Values like disk space use the same formatting expression from Step 4:
+- `{0:N2}` → number with two decimal places  
+- `-f` → formatting operator  
+
+This gives the report a clean, consistent structure.
+
+> Saving the output ensures the system information can be referenced later, shared with a team, or stored as part of a
 
 ---
 
-## **Step 6: Verify Output File**
+### **Step 6: Verify the Output File**
 
-The script generates a clean, readable system report:
+Once the report is generated, reviewing the saved text file confirms that every component of the script executed correctly—variable assignment, disk calculations, formatting expressions, and file output.
 
-<img width="583" height="146" alt="image" src="https://github.com/user-attachments/assets/1f0f3c37-dd2d-4e6d-91f5-cd2caf036317" />
+The final report includes:
 
-This confirms that variable assignments, disk calculations, and file export operations executed successfully.
+- **Computer Name**  
+  Retrieved from the `$env:COMPUTERNAME` environment variable.
+
+- **Operating System**  
+  Extracted using WMI from the `Win32_OperatingSystem` class.
+
+- **Free Disk Space (GB)**  
+  Calculated by dividing the raw `.Free` byte property by `1GB`.
+
+- **Total Disk Space (GB)**  
+  Computed by adding `.Used` + `.Free`, then converting to gigabytes.
+
+<img width="583" height="146" alt="image" src="https://github.com/user-attachments/assets/f782ccf9-3d12-4e06-a63c-3d6d5ad0d4b6" />
+
+#### **What This Confirms**
+
+- All variables were successfully assigned  
+- WMI queries returned valid OS information  
+- `Get-PSDrive` provided accurate storage metrics  
+- Formatting expressions applied correctly  
+- `Out-File` wrote and appended all lines in the correct order  
+- The file path created with `$reportPath` is valid  
+
+If all four fields appear with no errors and the values match expectations, the script has run exactly as intended.
+
+> This final check ensures the script produces a clean, readable report suitable for documentation, baseline inventory, or system auditing workflows.
 
 ---
 
