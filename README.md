@@ -67,20 +67,37 @@ $os = (Get-WmiObject Win32_OperatingSystem).Caption
 
 PowerShell returns the entire OS object, but using `.Caption` isolates the name we actually need.
 
-> These two variables form the foundation of the report—they describe *what system* is being evaluated before gathering performance or storage details.
+> These two variables form the foundation of the report; they describe *what system* is being evaluated before gathering performance or storage details.
 
 ---
 
-## **Step 3: Calculate Disk Space**
+### **Step 3: Calculate Disk Space**
 
-Next, the script retrieves information about the C: drive:
+The next part of the script retrieves storage information from the system’s primary drive. PowerShell represents drives as **objects**, each containing properties such as `Used`, `Free`, and `Name`. By accessing these properties directly, the script can calculate readable disk values for the report.
 
+<img width="585" alt="image" src="https://github.com/user-attachments/assets/0bd4c2f7-d0b0-4af8-95c2-2fb07dc9f4ce" />
+
+#### **Free Space on C: Drive**
 ```PowerShell
 $freeSpace = (Get-PSDrive C).Free / 1GB
+```
+
+- `Get-PSDrive C` returns the **C: drive object**.  
+- `.Free` extracts the remaining space in **bytes**.  
+- `/ 1GB` converts bytes into **gigabytes** using PowerShell’s built-in size constants.
+
+PowerShell automatically understands units like `KB`, `MB`, and `GB`, making conversions straightforward.
+
+#### **Total Space on C: Drive**
+```PowerShell
 $totalSpace = ((Get-PSDrive C).Used + (Get-PSDrive C).Free) / 1GB
 ```
 
-Using `/ 1GB` converts the output into gigabytes, making the results more readable.
+- `.Used` returns the amount of consumed space (also in bytes).  
+- Adding `.Used` + `.Free` produces the **total disk capacity**.  
+- Dividing by `1GB` converts the final number into gigabytes.
+
+> These calculations convert raw byte values into human-readable metrics, allowing the final report to show storage usage in a clear, standardized format.
 
 ---
 
