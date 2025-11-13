@@ -156,9 +156,9 @@ This makes the script flexible: it always saves to the correct Desktop, regardle
 
 #### **Write Each Line of the Report**
 ```PowerShell
-"Computer Name: $computerName" | Out-File $reportPath
-"Operating System: $os"         | Out-File $reportPath -Append
-("Free Space (GB): {0:N2}" -f $freeSpace)  | Out-File $reportPath -Append
+"Computer Name: $computerName"              | Out-File $reportPath
+"Operating System: $os"                     | Out-File $reportPath -Append
+("Free Space (GB): {0:N2}" -f $freeSpace)   | Out-File $reportPath -Append
 ("Total Space (GB): {0:N2}" -f $totalSpace) | Out-File $reportPath -Append
 ```
 
