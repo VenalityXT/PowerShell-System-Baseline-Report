@@ -32,8 +32,8 @@ PowerShell ISE provides a dedicated workspace for writing and testing PowerShell
 
 The editor is divided into two main sections:
 
-- **Script Pane** — where the `.ps1` file is written and saved  
-- **Console Pane** — where script output is displayed during execution
+- **Script Pane** - where the `.ps1` file is written and saved  
+- **Console Pane** - where script output is displayed during execution
 
 <img width="903" height="791" alt="S1" src="https://github.com/user-attachments/assets/fe0e3f84-4b93-4ab7-bdc3-aea1aac1ef08" />
 
@@ -41,16 +41,35 @@ This setup makes it easy to draft, test, and refine the script while inspecting 
 
 ---
 
-## **Step 2: Define System Variables**
+### **Step 2: Define System Variables**
 
-The script begins by collecting the computer name and operating system:
+The script begins by collecting basic system identity details. PowerShell stores information inside **variables**, which always start with a `$` symbol. These variables will later be used to print the system summary and write it to a report file.
 
-```PowerShell
+<img width="585" alt="image" src="https://github.com/user-attachments/assets/2c064e99-5400-447c-9097-cf705b3160d9" />
+
+#### **Computer Name**
+X
 $computerName = $env:COMPUTERNAME
-$os = (Get-WmiObject Win32_OperatingSystem).Caption
-```
+X
 
-These values provide the basic identity of the system and will be included in the final report.
+- `$env:` accesses Windows **environment variables** (values provided by the OS).  
+- `COMPUTERNAME` holds the hostname of the machine.  
+- PowerShell reads it and stores it into `$computerName`.
+
+This gives the script a reliable identifier for the report.
+
+#### **Operating System Name**
+X
+$os = (Get-WmiObject Win32_OperatingSystem).Caption
+X
+
+- `Get-WmiObject` queries system information using **Windows Management Instrumentation (WMI)**.  
+- `Win32_OperatingSystem` is a WMI class containing details about the installed OS.  
+- `.Caption` extracts the human-readable name (e.g., “Microsoft Windows Server 2022 Datacenter”).
+
+PowerShell returns the entire OS object, but using `.Caption` isolates the name we actually need.
+
+> These two variables form the foundation of the report—they describe *what system* is being evaluated before gathering performance or storage details.
 
 ---
 
