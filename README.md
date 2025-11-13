@@ -120,7 +120,7 @@ Write-Output ("Total Space (GB): {0:N2}" -f $totalSpace)
   Sends text into the console pane so you can immediately confirm whether variable values are correct.
 
 - `"Computer Name: $computerName"`  
-  This uses **string interpolation** — PowerShell replaces `$computerName` with its actual value.
+  This uses **string interpolation**. PowerShell replaces `$computerName` with its actual value.
 
 - `("Free Space (GB): {0:N2}" -f $freeSpace)`  
   This uses a **formatting operator (`-f`)**, which allows more control over numeric output:
@@ -132,7 +132,7 @@ Write-Output ("Total Space (GB): {0:N2}" -f $totalSpace)
 
 Using formatting ensures the report is clean, readable, and consistent.
 
-> Displaying results before writing them to a file acts as a verification step—if something looks incorrect, the script can be corrected before generating the final report.
+> Displaying results before writing them to a file acts as a verification step; if something looks incorrect, the script can be corrected before generating the final report.
 
 ---
 
@@ -186,7 +186,7 @@ This gives the report a clean, consistent structure.
 
 ### **Step 6: Verify the Output File**
 
-Once the report is generated, reviewing the saved text file confirms that every component of the script executed correctly—variable assignment, disk calculations, formatting expressions, and file output.
+Once the report is generated, reviewing the saved text file confirms that every component of the script executed correctly; variable assignment, disk calculations, formatting expressions, and file output.
 
 The final report includes:
 
@@ -222,5 +222,5 @@ If all four fields appear with no errors and the values match expectations, the 
 ## **Summary**
 
 This project demonstrates how PowerShell can automate routine system reporting tasks by collecting host details, formatting output, and exporting results for documentation or auditing.  
-By completing this workflow, I gained hands-on experience with PowerShell ISE, cmdlet usage, variable handling, text formatting, and file output creation—all essential skills for Windows system administration.
+By completing this workflow, I gained hands-on experience with PowerShell ISE, cmdlet usage, variable handling, text formatting, and file output creation; all essential skills for Windows system administration.
 
