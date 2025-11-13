@@ -14,7 +14,7 @@ This project demonstrates how to use PowerShell ISE to build an automated **syst
 The script retrieves details such as the computer name, Windows version, available disk space, and total disk capacity, then exports the results into a clean, readable text file.  
 
 <p align="left">
-  <a href="./BaselineReportScript.sh"><strong>View the Script »</strong></a>
+  <a href="./BaselineReportScript.ps1"><strong>View the Script »</strong></a>
 </p>
 
 ---
