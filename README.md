@@ -30,7 +30,7 @@ This reflects real-world system administration workflows where documenting syste
 
 PowerShell ISE provides a dedicated workspace for writing and testing PowerShell scripts. Running it with administrative privileges ensures the script can access system-level information such as disk properties, OS metadata, and environment variables.
 
-<img width="904" height="76" alt="image" src="https://github.com/user-attachments/assets/739b4956-4b6f-43cc-af52-b1ad832ee5ba" />
+<img width="903" height="791" alt="S1" src="https://github.com/user-attachments/assets/fe0e3f84-4b93-4ab7-bdc3-aea1aac1ef08" />
 
 The editor is divided into two main sections:
 
