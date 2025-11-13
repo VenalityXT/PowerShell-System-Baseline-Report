@@ -31,7 +31,7 @@ This reflects real-world system administration workflows where documenting syste
 Launch **PowerShell ISE** in Administrator mode to allow access to system-level commands.  
 Use the *New Script* button to create a blank `.ps1` file where the report logic will be written.
 
-<img width="400" src="PUT-YOUR-IMAGE-HERE" />
+<img width="904" height="76" alt="image" src="https://github.com/user-attachments/assets/739b4956-4b6f-43cc-af52-b1ad832ee5ba" />
 
 ---
 
@@ -39,10 +39,10 @@ Use the *New Script* button to create a blank `.ps1` file where the report logic
 
 The script begins by collecting the computer name and operating system:
 
-X
+```PowerShell
 $computerName = $env:COMPUTERNAME
 $os = (Get-WmiObject Win32_OperatingSystem).Caption
-X
+```
 
 These values provide the basic identity of the system and will be included in the final report.
 
@@ -52,10 +52,10 @@ These values provide the basic identity of the system and will be included in th
 
 Next, the script retrieves information about the C: drive:
 
-X
+```PowerShell
 $freeSpace = (Get-PSDrive C).Free / 1GB
 $totalSpace = ((Get-PSDrive C).Used + (Get-PSDrive C).Free) / 1GB
-X
+```
 
 Using `/ 1GB` converts the output into gigabytes, making the results more readable.
 
@@ -65,16 +65,16 @@ Using `/ 1GB` converts the output into gigabytes, making the results more readab
 
 The script prints each value to the terminal to provide real-time confirmation:
 
-X
+```PowerShell
 Write-Output "Computer Name: $computerName"
 Write-Output "Operating System: $os"
 Write-Output ("Free Space (GB): {0:N2}" -f $freeSpace)
 Write-Output ("Total Space (GB): {0:N2}" -f $totalSpace)
-X
+```
 
 **Terminal Output:**
 
-<img width="600" src="PUT-YOUR-IMAGE-HERE" />
+<img width="651" height="395" alt="image" src="https://github.com/user-attachments/assets/0ec9063f-45e4-439f-b934-04dd3f380879" />
 
 ---
 
@@ -82,13 +82,13 @@ X
 
 A file path is created on the Desktop, and the results are written into `Simple_System_Report.txt`:
 
-X
+```PowerShell
 $reportPath = "$env:USERPROFILE\Desktop\Simple_System_Report.txt"
 "Computer Name: $computerName" | Out-File $reportPath
 "Operating System: $os"         | Out-File $reportPath -Append
 ("Free Space (GB): {0:N2}" -f $freeSpace)  | Out-File $reportPath -Append
 ("Total Space (GB): {0:N2}" -f $totalSpace) | Out-File $reportPath -Append
-X
+```
 
 A final confirmation message is displayed with the saved file path.
 
@@ -98,7 +98,7 @@ A final confirmation message is displayed with the saved file path.
 
 The script generates a clean, readable system report:
 
-<img width="600" src="PUT-YOUR-OTHER-IMAGE-HERE" />
+<img width="583" height="146" alt="image" src="https://github.com/user-attachments/assets/1f0f3c37-dd2d-4e6d-91f5-cd2caf036317" />
 
 This confirms that variable assignments, disk calculations, and file export operations executed successfully.
 
