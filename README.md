@@ -10,9 +10,9 @@
 
 ## **Project Overview**
 
-This project demonstrates how to use PowerShell ISE to build an automated **system information report**. 
+This project demonstrates how to use PowerShell ISE to create an automated System Information Report similar to what IT and cybersecurity teams generate in real environments. The PowerShell script collects important system data such as the computer name, Windows version, system uptime, memory usage, available storage, and total disk capacity. It then formats this information in a clear layout and exports it to a text file for documentation and review.
 
-The script retrieves details such as the computer name, Windows version, available disk space, and total disk capacity, then exports the results into a clean, readable text file.  
+System administrators and SOC analysts often rely on reports like this to track system health, maintain baselines, support investigations, and streamline routine checks across multiple endpoints.
 
 <p align="left">
   <a href="./BaselineReportScript.ps1"><strong>View the Script »</strong></a>
