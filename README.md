@@ -26,12 +26,18 @@ This reflects real-world system administration workflows where documenting syste
 
 ---
 
-## **Step 1: Open PowerShell ISE & Create a New Script**
+### **Step 1: Open PowerShell ISE & Prepare the Script Environment**
 
-Launch **PowerShell ISE** in Administrator mode to allow access to system-level commands.  
-Use the *New Script* button to create a blank `.ps1` file where the report logic will be written.
+PowerShell ISE provides a dedicated workspace for writing and testing PowerShell scripts. Running it with administrative privileges ensures the script can access system-level information such as disk properties, OS metadata, and environment variables.
 
 <img width="904" height="76" alt="image" src="https://github.com/user-attachments/assets/739b4956-4b6f-43cc-af52-b1ad832ee5ba" />
+
+The editor is divided into two main sections:
+
+- **Script Pane** — where the `.ps1` file is written and saved  
+- **Console Pane** — where script output is displayed during execution  
+
+This setup makes it easy to draft, test, and refine the script while inspecting objects in real time. It’s especially useful for reporting tasks that rely on cmdlets returning structured data, such as OS details or drive statistics.
 
 ---
 
