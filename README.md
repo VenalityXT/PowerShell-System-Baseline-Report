@@ -10,7 +10,8 @@
 
 ## **Project Overview**
 
-This project demonstrates how to use PowerShell ISE to build an automated **system information report**.  
+This project demonstrates how to use PowerShell ISE to build an automated **system information report**. 
+
 The script retrieves details such as the computer name, Windows version, available disk space, and total disk capacity, then exports the results into a clean, readable text file.  
 
 <p align="left">
