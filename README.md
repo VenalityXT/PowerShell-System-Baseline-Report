@@ -221,6 +221,6 @@ If all four fields appear with no errors and the values match expectations, the 
 
 ## **Summary**
 
-This project demonstrates how PowerShell can automate routine system reporting tasks by collecting host details, formatting output, and exporting results for documentation or auditing.  
-By completing this workflow, I gained hands-on experience with PowerShell ISE, cmdlet usage, variable handling, text formatting, and file output creation; all essential skills for Windows system administration.
+Automating system reporting with PowerShell supports efficient collection of host details, storage metrics, and operating system information while producing consistent baseline documentation. The workflow demonstrates practical use of WMI queries, environment variables, object properties, formatting expressions, and file output handling within PowerShell ISE, reflecting core skills in Windows system administration.
 
+---
