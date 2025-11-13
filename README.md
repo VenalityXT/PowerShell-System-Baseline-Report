@@ -1,7 +1,7 @@
 # **PowerShell System Information Report**
 
 [![Windows](https://img.shields.io/badge/OS-Windows%20Server-blue?logo=windows)](https://www.microsoft.com/windows-server)
-[![PowerShell](https://img.shields.io/badge/Shell-PowerShell-5391FE?logo=powershell)](https://learn.microsoft.com/powershell/)
+[![PowerShell](https://img.shields.io/badge/Shell-PowerShell-5391FE?logo=powershell)](https://learn.microsoft.com/powershell/) 
 [![Automation](https://img.shields.io/badge/Focus-System%20Automation-orange)](https://en.wikipedia.org/wiki/Automation)
 [![System Reporting](https://img.shields.io/badge/Module-System%20Reporting-yellow)](https://learn.microsoft.com/powershell/module/microsoft.powershell.management/)
 [![Scripting](https://img.shields.io/badge/Skill-Scripting-lightgrey)](https://learn.microsoft.com/powershell/scripting/overview)
