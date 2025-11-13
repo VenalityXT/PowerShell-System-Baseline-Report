@@ -13,7 +13,9 @@
 This project demonstrates how to use PowerShell ISE to build an automated **system information report**.  
 The script retrieves details such as the computer name, Windows version, available disk space, and total disk capacity, then exports the results into a clean, readable text file.  
 
-This reflects real-world system administration workflows where documenting system baselines, collecting host information, and organizing output for team use are routine responsibilities.
+<p align="left">
+  <a href="./BaselineReportScript.sh"><strong>View the Script »</strong></a>
+</p>
 
 ---
 
